@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
+
 
 class scratch {
 
@@ -28,14 +30,18 @@ class scratch {
 
 
         int[] sum_vec;
-        sum_vec = new int[arr_A[0]];
+        sum_vec = new int[arr_A[0]+1];
         sum_vec[0]=arr_A[0];////the first element of vector is the length of vector
         for(int i=1;i<arr_A[0]+1;i++)
         {
             sum_vec[i]=arr_A[i]+arr_B[i];
         }
+        for(int i=0;i<arr_A[0]+1;i++)
+        {
+            System.out.println( );
+        }
 
-        write_vector_tofile(sum_vec);
+        //write_vector_tofile(sum_vec);
 
 
 
@@ -46,25 +52,51 @@ class scratch {
         System.out.println("Input Vector");
         int[] integers;
         while(true){
-            String userName = myObj.nextLine();  // Read user input
-            String[] integerStrings = userName.split(" ");
-            System.out.print(userName);
-            System.out.print(userName);
-            integers = new int[integerStrings.length+1];
-            integers[0]=integerStrings.length-1;//saving on the first element of vector the length of vector
+            //String userName = myObj.nextLine();  // Read user input
+            //String[] integerStrings = userName.split(" ");
+
+
+            /*for (int i = 0; i < userName.length; i++) {
+                if(!(isDigit(userName.charAt(i))==userName.charAt(i)==' '))
+                {
+                    continue;
+                }
+            }*/
+
+            integers = new int[500];
+            /*integers[0]=integerStrings.length-1;//saving on the first element of vector the length of vector
             System.out.print(integers[0]);
             try {
                 for (int i = 1; i < integers.length+1; i++) {
                     integers[i] = Integer.parseInt(integerStrings[i]);
-                    System.out.print(i);
-                    System.out.print(integers[i]);
+                    System.out.println(i+"i");
+                    System.out.print(integers[i]+"value");
                 }
             }
             catch(java.lang.NumberFormatException a)
             {
                 continue;
+            }*/
+            int i=1;
+            System.out.println("enter a number");
+            while(myObj.hasNext()) {
+                if (myObj.hasNextInt()) {
+                    integers[i]=myObj.nextInt();
+                    i++;
+                }
+
+
+                break;
+
             }
+            int d=0;
+            integers[0]=i;//length of vector
+
+
+
+
             break;
+
 
         }
 
