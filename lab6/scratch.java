@@ -2,9 +2,35 @@ import java.util.Scanner;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+
+
+class WektoryRoznejDlugosciException extends Exception {
+    int id;
+
+    public WektoryRoznejDlugosciException(int x) {
+        id = x;
+    }
+
+    public String toString() {
+        return "CustomException[" + id + "]";
+    }
+}
 
 
 class scratch {
+
+    static void compute(int a,int b) throws WektoryRoznejDlugosciException {
+        if (a != b)
+            throw new WektoryRoznejDlugosciException(a);
+        System.out.println("No error in prog. no exception caught");
+    }//own exception class
+
+
 
     public static void main(String[] args) {
         int[] arr_A;
@@ -15,6 +41,18 @@ class scratch {
             arr_A = read_vector();
             arr_B = read_vector();
             int size_a = arr_A[0], size_b = arr_B[0];////the first element of vector is the length of vector
+
+            try {
+                compute(size_a ,size_b);
+
+            }
+            catch(WektoryRoznejDlugosciException ex1) {
+                System.out.print("WektoryRoznejDlugosciException");
+                System.exit(0);
+            }
+            //WektoryRoznejDlugosciException
+
+
             if(size_a==size_b) {
                 if(size_a==0) {
                 System.out.print("vector are ampty");
@@ -25,99 +63,92 @@ class scratch {
             {
                 continue;
             }
-        }// Input vector with the same siz
+        }// Input vector with the same size
 
 
 
         int[] sum_vec;
-        sum_vec = new int[arr_A[0]+1];
+        sum_vec = new int[arr_A[0] +1];
         sum_vec[0]=arr_A[0];////the first element of vector is the length of vector
-        for(int i=1;i<arr_A[0]+1;i++)
-        {
-            sum_vec[i]=arr_A[i]+arr_B[i];
-        }
-        for(int i=0;i<arr_A[0]+1;i++)
-        {
-            System.out.println( );
+        for(int i=1;i<arr_A[0]+1;i++) {
+            sum_vec[i] = arr_A[i] + arr_B[i];
         }
 
-        //write_vector_tofile(sum_vec);
+
+        write_vector_tofile(sum_vec);
 
 
 
     }
 
     public static int[] read_vector() {
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        Scanner myObj = new Scanner(System.in);
+        // Create a Scanner object
+
         System.out.println("Input Vector");
         int[] integers;
-        while(true){
-            //String userName = myObj.nextLine();  // Read user input
-            //String[] integerStrings = userName.split(" ");
 
+        String userName = myObj.nextLine();
+        // Read user input
+        Scanner scan = new Scanner(userName);
+        integers = new int[500];
+        int i=1;
 
-            /*for (int i = 0; i < userName.length; i++) {
-                if(!(isDigit(userName.charAt(i))==userName.charAt(i)==' '))
-                {
-                    continue;
-                }
-            }*/
-
-            integers = new int[500];
-            /*integers[0]=integerStrings.length-1;//saving on the first element of vector the length of vector
-            System.out.print(integers[0]);
-            try {
-                for (int i = 1; i < integers.length+1; i++) {
-                    integers[i] = Integer.parseInt(integerStrings[i]);
-                    System.out.println(i+"i");
-                    System.out.print(integers[i]+"value");
-                }
+        while(scan.hasNextInt()) {
+            if (scan.hasNextInt()) {
+                integers[i]=scan.nextInt();
+                i++;
             }
-            catch(java.lang.NumberFormatException a)
-            {
-                continue;
-            }*/
-            int i=1;
-            System.out.println("enter a number");
-            while(myObj.hasNext()) {
-                if (myObj.hasNextInt()) {
-                    integers[i]=myObj.nextInt();
-                    i++;
-                }
-
-
-                break;
-
-            }
-            int d=0;
-            integers[0]=i;//length of vector
-
-
-
-
-            break;
-
-
         }
+        int d=0;
+        integers[0]=i;//length of vector
+
+
+
+
+
+
+
 
         return integers;
 }
 
-
-
     public static void write_vector_tofile(int[] data) {
+        File myObj = new File("text1.txt");
+        try {
 
+            myObj.createNewFile();
+        }
+        catch (IOException e)
+        {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        //creating new file
 
 
         try {
-            FileOutputStream file = new FileOutputStream("pic.dat");
-            for (int i = 0; i < data[0]; i++)
-                file.write(data[i]);
-            file.close();
-        } catch (IOException e) {
-            System.out.println("Error - " + e.toString());
-        }
-    }
 
+            FileWriter myWriter = new FileWriter("text1.txt");
+            PrintWriter writer = new PrintWriter(myObj);
+            writer.print("");
+            for (int i = 1; i < data[0]; i++)
+            {
+
+                char c=(char)(data[i] + '0');//convert to ascii
+                System.out.println(data[i]+" int and char "+c);
+                myWriter.write(c);
+                myWriter.write(' ');
+            }
+
+            //writing to file
+            myWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
 }
