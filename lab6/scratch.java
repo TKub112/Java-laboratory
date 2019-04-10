@@ -9,25 +9,30 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 
 
-class WektoryRoznejDlugosciException extends Exception {
-    int id;
 
-    public WektoryRoznejDlugosciException(int x) {
-        id = x;
+class WektoryRoznejDlugosciException extends Exception {
+    int a;
+    int b;
+
+    public WektoryRoznejDlugosciException(int x,int z) {
+        a = x;
+        b = z;
     }
 
     public String toString() {
-        return "CustomException[" + id + "]";
+        return   "Dlugosc wektora A" + (a-1) +  "Dlugosc wektora B: " + (b-1) ;
     }
+
 }
+
 
 
 class scratch {
 
     static void compute(int a,int b) throws WektoryRoznejDlugosciException {
         if (a != b)
-            throw new WektoryRoznejDlugosciException(a);
-        System.out.println("No error in prog. no exception caught");
+            throw new WektoryRoznejDlugosciException(a,b);
+
     }//own exception class
 
 
@@ -47,7 +52,7 @@ class scratch {
 
             }
             catch(WektoryRoznejDlugosciException ex1) {
-                System.out.print("WektoryRoznejDlugosciException");
+                System.out.print("WektoryRoznejDlugosciException \n Dlugosc wektora A: " + (size_a-1) + "Dlugosc wektora b:"+(size_b-1));
                 System.exit(0);
             }
             //WektoryRoznejDlugosciException
@@ -96,18 +101,13 @@ class scratch {
 
         while(scan.hasNextInt()) {
             if (scan.hasNextInt()) {
-                integers[i]=scan.nextInt();
+                integers[i]=scan.nextInt();//1a isnt an int
+
                 i++;
             }
         }
         int d=0;
         integers[0]=i;//length of vector
-
-
-
-
-
-
 
 
         return integers;
@@ -136,7 +136,6 @@ class scratch {
             {
 
                 char c=(char)(data[i] + '0');//convert to ascii
-                System.out.println(data[i]+" int and char "+c);
                 myWriter.write(c);
                 myWriter.write(' ');
             }
