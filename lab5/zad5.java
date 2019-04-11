@@ -57,31 +57,39 @@ public class zad5
 					while ((sCurrentLine = br.readLine()) != null) 
 					{
 						str_data+=sCurrentLine;
-						str_data+="\n";
 					}
+
 					//reading file to str_data
-					System.out.println(str_data);
+					//System.out.println(str_data);
 					//czytanie z pliku 
 					Random r = new Random();
-					int str_len,randomv;
-
+					int str_len=str_data.length(),randomv;
+					//System.out.println(str_len);
+					str_len=0;
+					System.out.println("Press Enter to continue");
 					while(true)
 					{
-					System.out.println("Press Enter to continue");
-					scan.nextLine();
-					str_len=r.nextInt(str_data.length());
+					scan.next();
+					
 					randomv=r.nextInt(5);
-					if(str_len+randomv>str_data.length())
-					{
-					str_len-=5;
-					}
+				
 					for(int i=0;i<randomv;i++)
 					{
-						
-						System.out.println((char)str_data.charAt(str_len+i));
+						System.out.print((char)str_data.charAt(str_len));
+						if(str_len==str_data.length())
+						{
+							break;
+						}
+						str_len++;
 					}
-					System.out.println("");
+					if(str_len==str_data.length())
+					{
+						break;
 					}
+
+					
+					}
+					//print text 
 					
 
 			}

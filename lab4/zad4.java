@@ -33,11 +33,11 @@ public class zad4
 
 			iofile();
 			niofile();
-			System.out.println("Write time in io:"+ zad4.time_io_write);
-			System.out.println("Read time in io:"+ zad4.time_io_read);
-			System.out.println("Write time in nio:"+ zad4.time_nio_write);
-			System.out.println("Read time in nio:"+ zad4.time_nio_read);
-	   		System.out.println("Summary in io:"+ (zad4.time_io_write+zad4.time_io_read)+"\n"+"Summary time in nio:"+ (zad4.time_nio_write+zad4.time_nio_read));
+			System.out.println("Write time in io:"+ zad4.time_io_write/1000000+" ms");
+			System.out.println("Read time in io:"+ zad4.time_io_read/1000000+" ms");
+			System.out.println("Write time in nio:"+ zad4.time_nio_write/1000000+" ms");
+			System.out.println("Read time in nio:"+ zad4.time_nio_read/1000000+" ms");
+	   		System.out.println("Summary in io:"+ (zad4.time_io_write+zad4.time_io_read)/1000000+" ms"+"\n"+"Summary time in nio:"+ (zad4.time_nio_write+zad4.time_nio_read)/1000000+" ms");
 
    }
 		public static void iofile()
@@ -90,7 +90,7 @@ public class zad4
 				//read from file
 
 
-				//zamykanie pliku????
+		
 		   		endTime = System.nanoTime();
 				timeElapsed = endTime - startTime;
 				zad4.time_io_read=timeElapsed;
