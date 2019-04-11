@@ -77,7 +77,7 @@ class scratch {
         sum_vec[0]=arr_A[0];////the first element of vector is the length of vector
         for(int i=1;i<arr_A[0]+1;i++) {
             sum_vec[i] = arr_A[i] + arr_B[i];
-        }
+        }//sumation of vector
 
 
         write_vector_tofile(sum_vec);
