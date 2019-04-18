@@ -30,42 +30,30 @@ public class Zad7 {
 
 
 	public static void main(String[] args) {
-		//NrTelefoniczny numer1= new NrTelefoniczny();
-/*
-		//String nrk= new String("75555");
-		NrTelefoniczny numer1 = new NrTelefoniczny("048", "55");
-		Osoba osoba1 = new Osoba("Marcin", "Podborski", "Mleczna 5", "0487222");
-
-
-		//tel = new TreeMap<>();
-		Map<NrTelefoniczny, Wpis> ksiazka_tel = new TreeMap<>();
-		ksiazka_tel.put(numer1, osoba1);
-		for (Map.Entry m : ksiazka_tel.entrySet()) {
-			System.out.println(m.getKey() + " " + m.getValue());
-		}*/
 		try {
-			Osoba OsNr1 = new Osoba("Marek", "Kart", "Warszawa", new NrTelefoniczny("48", "495341987"));
-			Osoba OsNr2 = new Osoba("John", "Blues", "Warszawa", new NrTelefoniczny("34", "495341987"));
-			Osoba OsNr3 = new Osoba("Tim", "Lopp", "Ciechocinek", new NrTelefoniczny("12", "145987645"));
-			Firma FiNr1 = new Firma("Drutexxx", "Lodz", new NrTelefoniczny("68", "784651324"));
-			Firma FiNr2 = new Firma("Kujawski", "Bialystok", new NrTelefoniczny("77", "254168974"));
-			Firma FiNr3 = new Firma("Holand", "Belgia", new NrTelefoniczny("47", "541687985"));
-			TreeMap<NrTelefoniczny, Wpis> tmap = new TreeMap<>();
-			tmap.put(OsNr1.nr,OsNr1);
-			tmap.put(OsNr2.nr,OsNr2);
-			tmap.put(OsNr3.nr,OsNr3);
-			tmap.put(FiNr1.nr,FiNr1);
-			tmap.put(FiNr2.nr,FiNr2);
-			tmap.put(FiNr3.nr,FiNr3);
+			Osoba Person1 = new Osoba("Marek", "Kart", "Warszawa", new NrTelefoniczny("12", "495341987"));
+			Osoba Person2 = new Osoba("John", "Blues", "Warszawa", new NrTelefoniczny("34", "495341987"));
+			Osoba Person3 = new Osoba("Tim", "Lopp", "Ciechocinek", new NrTelefoniczny("14", "545987645"));
+			Firma Company1 = new Firma("Drutexxx", "Lodz", new NrTelefoniczny("68", "784651324"));
+			Firma Company2 = new Firma("Kujawski", "Bialystok", new NrTelefoniczny("77", "454168974"));
+			Firma Company3 = new Firma("Holand", "Belgia", new NrTelefoniczny("47", "541687985"));
+			TreeMap<NrTelefoniczny, Wpis> TREEMAP = new TreeMap<>();
 
+			TREEMAP.put(Person1.nr,Person1);
+			TREEMAP.put(Person2.nr,Person2);
+			TREEMAP.put(Person3.nr,Person3);
+			TREEMAP.put(Company1.nr,Company1);
+			TREEMAP.put(Company2.nr,Company2);
+			TREEMAP.put(Company3.nr,Company3);
+		
 
-			for (Map.Entry<NrTelefoniczny,Wpis> iterator : tmap.entrySet()){
+			for (Map.Entry<NrTelefoniczny,Wpis> iterator : TREEMAP.entrySet()){
 				Wpis it = iterator.getValue();
 				it.Opis();
 			}
 		}
-		catch(Exception e){
-			System.out.println("Error : " + e.getLocalizedMessage());
+		catch(Exception exc){
+			System.out.println(exc.getLocalizedMessage());
 		}
 	}
 
